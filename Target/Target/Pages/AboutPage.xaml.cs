@@ -49,17 +49,9 @@ namespace Target.Pages
                             .OneWayBind(ViewModel, vm => vm.IsTermsOn, x => x.btnTerms.IsVisible)
                             .DisposeWith(disposables);
                         this.btnPolicy.Events().Clicked.Throttle(TimeSpan.FromMilliseconds(150), RxApp.MainThreadScheduler)
-                            .Do((x) =>
-                            {
-                                Navigation.PushAsync(policypage);
-                            })
-                            .Subscribe().DisposeWith(disposables);
+                            .Subscribe(x => Navigation.PushAsync(policypage)).DisposeWith(disposables);
                         this.btnTerms.Events().Clicked.Throttle(TimeSpan.FromMilliseconds(150), RxApp.MainThreadScheduler)
-                            .Do((x) =>
-                            {
-                                Navigation.PushAsync(termspage);
-                            })
-                            .Subscribe().DisposeWith(disposables);
+                            .Subscribe(x => Navigation.PushAsync(termspage)).DisposeWith(disposables);
                         this
                             .OneWayBind(ViewModel, vm => vm.Version, x => x.lblVersion.Text)
                             .DisposeWith(disposables);
