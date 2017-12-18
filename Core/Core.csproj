@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\ic_event_note_black_24px.svg" />
+    <None Remove="Resources\ic_home_black_36px.svg" />
+    <None Remove="Resources\ic_person_black_24px.svg" />
+    <None Remove="Resources\ic_public_black_24px.svg" />
+    <None Remove="Resources\ic_settings_black_24px.svg" />
+    <None Remove="Resources\ic_vpn_key_black_24px.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ic_event_note_black_24px.svg" />
+    <EmbeddedResource Include="Resources\ic_home_black_36px.svg" />
+    <EmbeddedResource Include="Resources\ic_person_black_24px.svg" />
+    <EmbeddedResource Include="Resources\ic_public_black_24px.svg" />
+    <EmbeddedResource Include="Resources\ic_settings_black_24px.svg" />
+    <EmbeddedResource Include="Resources\ic_vpn_key_black_24px.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="akavache" Version="6.0.0-alpha0038" />
+    <PackageReference Include="Autofac" Version="4.6.2" />
+    <PackageReference Include="Genesis.Ensure" Version="2.0.0" />
+    <PackageReference Include="Genesis.Logging" Version="2.0.0" />
+    <PackageReference Include="Genesis.Observables" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="ReactiveUI" Version="8.0.0-alpha0113" />
+    <PackageReference Include="reactiveui-events-xamforms" Version="8.0.0-alpha0109" />
+    <PackageReference Include="reactiveui-xamforms" Version="8.0.0-alpha0109" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.5.166-beta" />
+    <PackageReference Include="System.Reactive" Version="3.1.1" />
+    <PackageReference Include="Toasts.Forms.Plugin" Version="3.2.1" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.0.3" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.2.22" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.2.22" />
+    <PackageReference Include="Xamarin.Forms" Version="2.4.0.282" />
+  </ItemGroup>
+
+</Project>
