@@ -20,8 +20,9 @@
 * Base level theming via Constants.cs
 * Login button has a random chance of working, allowing you to setup failure logic even though no authentication system is being called yet.
 * User settings are stored using Akavache (Sqlite)
+* About, Policy, and Terms page allow you to use HTML
 
-## Projects:
+## Works Using:
 * Android
 * iOS
 * UWP
