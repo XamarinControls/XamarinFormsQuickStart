@@ -38,23 +38,19 @@ namespace Target.Pages
                             .OneWayBind(ViewModel, vm => vm.Greeting, x => x.lbl.Text)
                             .DisposeWith(disposables);                        
                         this.btnAgree.Events().Clicked.Throttle(TimeSpan.FromMilliseconds(150), RxApp.MainThreadScheduler)
-                            .Do(async (x) =>
-                            {
+                            .Subscribe(async x => {
                                 await this.SetAgreement();
                                 MessagingCenter.Send<ITermsPage>(this, "mTermsAgreed");
-                            })
-                            .Subscribe().DisposeWith(disposables);
+                            }).DisposeWith(disposables);
                         // hide btnAgree if terms are already agreed to
                         this
                             .OneWayBind(ViewModel, vm => vm.IsTermsOn, x => x.btnAgree.IsVisible)
                             .DisposeWith(disposables);
                         this.btnDisagree.Events().Clicked.Throttle(TimeSpan.FromMilliseconds(150), RxApp.MainThreadScheduler)
-                            .Do((x) =>
-                            {
+                            .Subscribe(x => {
                                 var goodbyepage = (Page)App.Container.Resolve<IGoodByePage>();
                                 Navigation.PushModalAsync(goodbyepage);
-                            })
-                            .Subscribe().DisposeWith(disposables);
+                            }).DisposeWith(disposables);
                         // hide btnDisagree if terms are already agreed to
                         this
                             .OneWayBind(ViewModel, vm => vm.IsTermsOn, x => x.btnDisagree.IsVisible)

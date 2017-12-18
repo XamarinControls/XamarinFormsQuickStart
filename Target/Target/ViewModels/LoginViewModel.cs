@@ -33,8 +33,8 @@ namespace Target.ViewModels
         public ReactiveCommand<Unit, Unit> LoginCommand => this.loginCommand;
         private IObservable<Unit> LoginAsync() =>
             Observable
+                 // this allows the login button to fail/success randomly
                 .Return(new Random().Next(0, 2) == 1)
-                //.Delay(TimeSpan.FromSeconds(1))
                 .Do(
                     success =>
                     {
