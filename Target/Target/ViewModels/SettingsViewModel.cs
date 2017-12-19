@@ -13,8 +13,6 @@ namespace Target.ViewModels
 {
     public class SettingsViewModel : BaseViewModel, ISettingsViewModel
     {
-                
-
         bool isManualFontOn;
         public bool IsManualFontOn
         {

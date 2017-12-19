@@ -51,9 +51,7 @@ namespace Target.ViewModels
         {
             _settingsService = _settingsService ?? App.Container.Resolve<ISettingsService>();
             _settingsFactory = _settingsFactory ?? App.Container.Resolve<ISettingsFactory>();
-            var fireandforget = Task.Run(async () => await InitializeSettings());
-            
-
+            var fireandforget = Task.Run(async () => await InitializeSettings()); 
         }
         private async Task InitializeSettings()
         {

@@ -19,7 +19,6 @@ namespace Target.Services
             this.settingsFactory = settingsFactory;
             _KeyName = this.settingsFactory.KeyName;
             this.iSQLiteRepository = iSQLiteRepository;
-            //var fireandforget = Task.Run(async () => await CheckSettings());
         }
         public async Task CheckSettings()
         {
