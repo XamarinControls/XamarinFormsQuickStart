@@ -82,16 +82,5 @@ namespace Target.ViewModels
             IsManualFontOn = settings.IsManualFont;
             ShowConnectionErrors = settings.ShowConnectionErrors;
         }
-        
-
-        private async void ShowToast(INotificationOptions options)
-        {
-            var notificator = DependencyService.Get<IToastNotificator>();
-
-            if (notificator != null)
-            {
-                var result = await notificator.Notify(options);
-            }
-        }
     }
 }

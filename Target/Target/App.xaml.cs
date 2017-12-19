@@ -197,6 +197,8 @@ namespace Target
             {
                 builder.RegisterType<LoginPage>().As<ILoginPage>();
                 builder.RegisterType<LoginViewModel>().As<ILoginViewModel>();
+                builder.RegisterType<LogoutPageViewModel>().As<ILogoutPageViewModel>();
+                builder.RegisterType<LogoutPage>().As<ILogoutPage>();
             }
             builder.RegisterType<SettingsViewModel>().As<ISettingsViewModel>();
             builder.RegisterType<HomePageViewModel>().As<IHomePageViewModel>();
@@ -213,15 +215,15 @@ namespace Target
             builder.RegisterType<AboutPage>().As<IAboutPage>();
             if (Constants.IsTermsPageEnabled)
             {
+                builder.RegisterType<TermsPage>().As<ITermsPage>();
                 builder.RegisterType<TermsPageViewModel>().As<ITermsPageViewModel>();
+                builder.RegisterType<PolicyPageViewModel>().As<IPolicyPageViewModel>();
+                builder.RegisterType<PolicyPage>().As<IPolicyPage>();                
             }
-            builder.RegisterType<PolicyPageViewModel>().As<IPolicyPageViewModel>();
-            builder.RegisterType<PolicyPage>().As<IPolicyPage>();
-            builder.RegisterType<TermsPage>().As<ITermsPage>();
+            
             builder.RegisterType<AboutPageViewModel>().As<IAboutPageViewModel>();
             builder.RegisterType<GoodByePage>().As<IGoodByePage>();
             builder.RegisterType<SvgImageSourceConverterForReactive>().As<ISvgImageSourceConverterForReactive>();
-            /*builder.RegisterGeneric(typeof(SQLiteRepository<>)).As(typeof(ISQLiteRepository<>)).InstancePerLifetimeScope()*/
             ;
 
             Container = builder.Build();

@@ -52,6 +52,7 @@
     <Compile Include="Interfaces\IAboutPageViewModel.cs" />
     <Compile Include="Interfaces\IActivitiesPage.cs" />
     <Compile Include="Interfaces\IActivitiesPageViewModel.cs" />
+    <Compile Include="Interfaces\ILogoutPageViewModel.cs" />
     <Compile Include="Interfaces\IReverseBoolConverter.cs" />
     <Compile Include="Interfaces\IDoubleToIntConverter.cs" />
     <Compile Include="Interfaces\IGoodByePage.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\LogoutPageViewModel.cs" />
     <Compile Include="ViewModels\MasterListItemViewModel.cs" />
     <Compile Include="ViewModels\MasterListViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewModel.cs" />
