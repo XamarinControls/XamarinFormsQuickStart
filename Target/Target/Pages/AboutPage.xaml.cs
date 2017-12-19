@@ -19,13 +19,15 @@ namespace Target.Pages
     public partial class AboutPage : ContentPageBase<AboutPageViewModel>, IAboutPage
     {
         Page termspage;
+        Page policypage;
         public AboutPage()
         {
             InitializeComponent();
             ViewModel = (AboutPageViewModel)App.Container.Resolve<IAboutPageViewModel>();
-            var policypage = (Page)App.Container.Resolve<IPolicyPage>();
+            
             if (Constants.IsTermsPageEnabled)
             {
+                policypage = (Page)App.Container.Resolve<IPolicyPage>();
                 termspage = (Page)App.Container.Resolve<ITermsPage>();
             }
 
@@ -47,6 +49,9 @@ namespace Target.Pages
                             .DisposeWith(disposables);
                         this
                             .OneWayBind(ViewModel, vm => vm.IsTermsOn, x => x.btnTerms.IsVisible)
+                            .DisposeWith(disposables);
+                        this
+                            .OneWayBind(ViewModel, vm => vm.IsTermsOn, x => x.btnPolicy.IsVisible)
                             .DisposeWith(disposables);
                         this.btnPolicy.Events().Clicked.Throttle(TimeSpan.FromMilliseconds(150), RxApp.MainThreadScheduler)
                             .Subscribe(x => Navigation.PushAsync(policypage)).DisposeWith(disposables);
