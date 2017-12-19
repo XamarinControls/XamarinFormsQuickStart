@@ -43,6 +43,16 @@ namespace Target
                 {
                     loadMainPage();
                 }
+                else
+                {
+                    ShowToast(new NotificationOptions()
+                    {
+                        Title = "Oops!",
+                        Description = $"Login Failed!",
+                        IsClickable = true,
+                        ClearFromHistory = true
+                    });
+                }
             });
             MessagingCenter.Subscribe<ITermsPage>(this, "mTermsAgreed", (sender) =>
             {

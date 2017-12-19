@@ -14,6 +14,15 @@ namespace Target.ViewModels
     {
         public ISettingsFactory _settingsFactory;
         public ISettingsService _settingsService;
+        private string toastMessage;
+        public string ToastMessage
+        {
+            get
+            {
+                return toastMessage;
+            }
+            set { this.RaiseAndSetIfChanged(ref toastMessage, value); }
+        }
         private string greeting;
         public string Greeting
         {

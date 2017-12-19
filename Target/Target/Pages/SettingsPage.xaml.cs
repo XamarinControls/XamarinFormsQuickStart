@@ -181,7 +181,7 @@ namespace Target.Pages
                         this
                             .OneWayBind(this.ViewModel, x => x.FontSize, x => x.sectionLabelDiagnostics.FontSize, vmToViewConverterOverride: bindingIntToDoubleConverter)
                             .DisposeWith(disposables);
-                        this.Bind(ViewModel, vm => vm.FontSize, x => x.fontSlider.Value, vmToViewConverterOverride: bindingIntToDoubleConverter, viewToVMConverterOverride: bindingDoubleToIntConverter )
+                        this.Bind(ViewModel, vm => vm.FontSize, x => x.fontSlider.Value, vmToViewConverterOverride: bindingIntToDoubleConverter, viewToVMConverterOverride: bindingDoubleToIntConverter)
                             .DisposeWith(disposables);
                         this.fontSlider.Events().ValueChanged
                             .Throttle(TimeSpan.FromMilliseconds(150), RxApp.MainThreadScheduler)
@@ -209,14 +209,20 @@ namespace Target.Pages
                             .DisposeWith(disposables);
                         this
                             .OneWayBind(this.ViewModel, x => x.IsManualFontOn, x => x.fontSlider.IsEnabled)
-                            .DisposeWith(disposables);
+                            .DisposeWith(disposables);                        
                         this
                             .OneWayBind(this.ViewModel, x => x.FontSize, x => x.showConnectionErrorsLabel.FontSize, vmToViewConverterOverride: bindingIntToDoubleConverter)
                             .DisposeWith(disposables);
                         this
                             .Bind(this.ViewModel, x => x.ShowConnectionErrors, x => x.showConnectionErrors.IsToggled)
                             .DisposeWith(disposables);
+                        this.BindCommand(
+                            this.ViewModel,
+                            x => x.ShowConnectionErrorsCommand,
+                            x => x.showConnectionErrors, nameof(showConnectionErrors.Toggled))
+                            .DisposeWith(disposables);
                     });
+                                    
         }
         double getDevicePadding()
         {
@@ -236,18 +242,7 @@ namespace Target.Pages
             return topPadding;
         }
         
-
-        void showConnectionErrors_Toggled(Object sender, ToggledEventArgs e)
-        {
-            ((SettingsViewModel)this.BindingContext).ShowConnectionErrorsClicked = 1;
-        }
-
-        void OnFontSliderValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            var rounded = Math.Round(e.NewValue);
-            fontSliderLabel.Text = $"Custom Font Size is {rounded}";
-            MessagingCenter.Send<ISettingsPage>(this, "mSettingsFontChanged");
-        }
+        
         protected override void OnAppearing()
         {
             // Cannot be depended on in Android when navigating back to page

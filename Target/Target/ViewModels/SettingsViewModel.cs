@@ -36,11 +36,10 @@ namespace Target.ViewModels
             get { return showConnectionErrors; }
             set { this.RaiseAndSetIfChanged(ref showConnectionErrors, value); }
         }
-        
-        public int ShowConnectionErrorsClicked
-        { set { Task.Run(async () => await SetShowConnectionErrors()); } }
-        //public int IsManualFontOnClicked
-        //{ set { Task.Run(async () => await SetManualFont()); } }
+
+        private readonly ReactiveCommand showConnectionErrorsCommand;
+        public ReactiveCommand ShowConnectionErrorsCommand => this.showConnectionErrorsCommand;
+
         private readonly ReactiveCommand isManualFontOnClicked;
         public ReactiveCommand IsManualFontOnClicked => this.isManualFontOnClicked;
         private readonly ReactiveCommand fontSliderChanged;
@@ -52,7 +51,8 @@ namespace Target.ViewModels
             var fireandforget = Task.Run(async () => await InitializeSettings());
             this.fontSliderChanged = ReactiveCommand.CreateFromTask(async _ =>  await SetFontSize());
             this.isManualFontOnClicked = ReactiveCommand.CreateFromTask(async _ =>  await SetManualFont());
-            
+            this.showConnectionErrorsCommand = ReactiveCommand.CreateFromTask(async _ =>  await SetShowConnectionErrors());
+
         }
         private async Task SetManualFont()
         {

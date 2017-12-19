@@ -11,8 +11,8 @@ namespace Target.Interfaces
         bool IsManualFontOn { get; set; }
         bool IsSwitchOn { get; set; }
         bool ShowConnectionErrors { get; set; }
-        int ShowConnectionErrorsClicked { set; }
-        //int IsManualFontOnClicked { set; }
+        ReactiveCommand IsManualFontOnClicked { get; }
+        ReactiveCommand ShowConnectionErrorsCommand { get; }
         ReactiveCommand FontSliderChanged { get; }
 
     }

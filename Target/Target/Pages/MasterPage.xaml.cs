@@ -14,6 +14,10 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Reactive.Linq;
 using System.Reactive.Disposables;
+using Plugin.Connectivity;
+using Plugin.Connectivity.Abstractions;
+using System.Diagnostics;
+using Plugin.Toasts;
 
 namespace Target.Pages
 {
@@ -45,6 +49,23 @@ namespace Target.Pages
                                                     h => masterPage.ListView.ItemSelected -= h)
                                 .Subscribe(x => OnItemSelected(x.Sender, x.EventArgs))
                                 .DisposeWith(disposables);
+                        Observable.FromEventPattern<ConnectivityChangedEventHandler, ConnectivityChangedEventArgs>(h => CrossConnectivity.Current.ConnectivityChanged += h,
+                                                                                  h => CrossConnectivity.Current.ConnectivityChanged -= h)
+                                 .Subscribe(x => {
+                                     var connection = (x.EventArgs.IsConnected) ? "Connected" : "disconnected";
+                                     if (setting.ShowConnectionErrors)
+                                     {
+                                         ShowToast(new NotificationOptions()
+                                         {
+                                             Title = "Connection",
+                                             Description = $"Connectivity changed to {connection}",
+                                             IsClickable = true,
+                                             //WindowsOptions = new WindowsOptions() { LogoUri = "icon.png" },
+                                             ClearFromHistory = true
+                                         });
+                                     }                                     
+                                 })
+                                 .DisposeWith(disposables);
                     });
         }
         
