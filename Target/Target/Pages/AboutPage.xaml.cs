@@ -61,6 +61,9 @@ namespace Target.Pages
                             .OneWayBind(ViewModel, vm => vm.Version, x => x.lblVersion.Text)
                             .DisposeWith(disposables);
                         this
+                            .OneWayBind(this.ViewModel, x => x.FontSize, x => x.labelForlblVersion.FontSize, vmToViewConverterOverride: bindingIntToDoubleConverter)
+                            .DisposeWith(disposables);
+                        this
                             .OneWayBind(this.ViewModel, x => x.FontSize, x => x.lblVersion.FontSize, vmToViewConverterOverride: bindingIntToDoubleConverter)
                             .DisposeWith(disposables);
                         this
@@ -69,6 +72,9 @@ namespace Target.Pages
                         this
                            .OneWayBind(ViewModel, vm => vm.HTMLSource, x => x.webview.Source)
                            .DisposeWith(disposables);
+                        this
+                            .OneWayBind(this.ViewModel, x => x.FontSize, x => x.labelForlblAppName.FontSize, vmToViewConverterOverride: bindingIntToDoubleConverter)
+                            .DisposeWith(disposables);
                         this
                             .OneWayBind(this.ViewModel, x => x.FontSize, x => x.lblAppName.FontSize, vmToViewConverterOverride: bindingIntToDoubleConverter)
                             .DisposeWith(disposables);                        

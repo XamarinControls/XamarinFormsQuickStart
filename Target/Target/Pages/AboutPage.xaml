@@ -18,11 +18,11 @@
             </Grid.RowDefinitions>
             <Label FontAttributes="Bold"  x:Name="lbl" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" >
-                <Label Text="Application Name:"></Label>
+                <Label x:Name="labelForlblAppName" Text="Application Name:"></Label>
                 <Label x:Name="lblAppName"></Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="2" >
-                <Label Text="Version:"></Label>
+                <Label x:Name="labelForlblVersion" Text="Version:"></Label>
                 <Label x:Name="lblVersion"></Label>
             </StackLayout>
             <WebView x:Name="webview" Grid.Row="3" />            
