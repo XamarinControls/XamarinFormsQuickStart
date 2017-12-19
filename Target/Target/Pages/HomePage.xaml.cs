@@ -32,9 +32,8 @@ namespace Target.Pages
                             .DisposeWith(disposables);
                         this.OneWayBind(ViewModel, vm => vm.FontSize, view => view.ffimage.HeightRequest, x => GetSquaredImageSize(x))
                             .DisposeWith(disposables);
-                        // although the following works, It doesn't appear to be needed
-                        //this.OneWayBind(ViewModel, vm => vm.FontSize, view => view.ffimage.WidthRequest, x => GetSquaredImageSize(x))
-                        //    .DisposeWith(disposables);
+                        this.OneWayBind(ViewModel, vm => vm.FontSize, view => view.ffimage.WidthRequest, x => GetSquaredImageSize(x))
+                            .DisposeWith(disposables);
                     });
 
             var orgPage = (Page)App.Container.Resolve<IOrganizationPage>();
