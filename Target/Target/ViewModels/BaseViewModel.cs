@@ -1,11 +1,6 @@
 ﻿using Target.Interfaces;
 using ReactiveUI;
-using Splat;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using Autofac;
 
 namespace Target.ViewModels
 {
@@ -47,17 +42,18 @@ namespace Target.ViewModels
         }
 
         protected readonly ViewModelActivator viewModelActivator = new ViewModelActivator();
-        public BaseViewModel()
+        public BaseViewModel(ISettingsService settingsService, ISettingsFactory settingsFactory)
         {
-            _settingsService = _settingsService ?? App.Container.Resolve<ISettingsService>();
-            _settingsFactory = _settingsFactory ?? App.Container.Resolve<ISettingsFactory>();
+            _settingsFactory = settingsFactory;
+            _settingsService = settingsService;
+            //_settingsService = _settingsService ?? App.Container.Resolve<ISettingsService>();
+            //_settingsFactory = _settingsFactory ?? App.Container.Resolve<ISettingsFactory>();
             var fireandforget = Task.Run(async () => await InitializeSettings()); 
         }
         private async Task InitializeSettings()
         {
             var settings = await _settingsService.GetSettings();
             FontSize = settings.FontSize;
-            var x = FontSize;
         }
     }
 }

@@ -1,30 +1,21 @@
 ﻿using ReactiveUI;
 using Target.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Target.ViewModels
 {
     public class LoginViewModel : BaseViewModel, ILoginViewModel
     {
-        string labelWelcomeText;
-        public string LabelWelcomeText
-        {
-            get { return labelWelcomeText; }
-            private set { this.RaiseAndSetIfChanged(ref labelWelcomeText, value); }
-        }
 
         private readonly ReactiveCommand<Unit, Unit> loginCommand;
-        public LoginViewModel()
+        public LoginViewModel(ISettingsService settingsService, ISettingsFactory settingsFactory)
+            :base(settingsService, settingsFactory )
         {
-            labelWelcomeText = "Welcome to " + Constants.AppName + "!";
-            Greeting = "Login Page";
+            Greeting = "Welcome to " + Constants.AppName + "!";
             var canLogin = Observable.Return<bool>(true); // you could do some logic here instead
             this.loginCommand = ReactiveCommand.CreateFromObservable(
                 this.LoginAsync,
@@ -33,7 +24,7 @@ namespace Target.ViewModels
         public ReactiveCommand<Unit, Unit> LoginCommand => this.loginCommand;
         private IObservable<Unit> LoginAsync() =>
             Observable
-                 // this allows the login button to fail/success randomly
+                 // this allows the login button to fail/succeed randomly
                 .Return(new Random().Next(0, 2) == 1)
                 .Do(
                     success =>

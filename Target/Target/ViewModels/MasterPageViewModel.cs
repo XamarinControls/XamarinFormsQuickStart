@@ -16,7 +16,8 @@ namespace Target.ViewModels
     {
        
 
-        public MasterPageViewModel()
+        public MasterPageViewModel(ISettingsService settingsService, ISettingsFactory settingsFactory)
+            : base(settingsService, settingsFactory)
         {
         }
         

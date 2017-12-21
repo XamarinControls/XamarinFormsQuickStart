@@ -29,7 +29,8 @@ namespace Target.ViewModels
             get { return isTermsOn; }
             set { this.RaiseAndSetIfChanged(ref isTermsOn, value); }
         }
-        public TermsPageViewModel()
+        public TermsPageViewModel(ISettingsService settingsService, ISettingsFactory settingsFactory)
+            : base(settingsService, settingsFactory)
         {
             Greeting = "Terms And Conditions";
             HTMLSource = HTMLSource ?? new HtmlWebViewSource();

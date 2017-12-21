@@ -14,7 +14,7 @@ namespace Target
         public static bool CheckInternet = false; // mostly used for external apps
         public static bool ShowWifiErrors = false; // only useful for internal apps
         public static bool IsTermsPageEnabled = true;
-        public static bool IsLoginPageEnabled = false;
+        public static bool IsLoginPageEnabled = true;
         public static string AppName = "MYAPP";
 
         //Colors

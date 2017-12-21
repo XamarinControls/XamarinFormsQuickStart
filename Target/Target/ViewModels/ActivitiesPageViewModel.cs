@@ -9,7 +9,8 @@ namespace Target.ViewModels
     public class ActivitiesPageViewModel : BaseViewModel, IActivitiesPageViewModel
     {
         
-        public ActivitiesPageViewModel()
+        public ActivitiesPageViewModel(ISettingsService settingsService, ISettingsFactory settingsFactory)
+            : base(settingsService, settingsFactory)
         {
             Greeting = "Activities Page";
         }

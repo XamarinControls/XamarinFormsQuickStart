@@ -23,7 +23,7 @@ namespace Target.Pages
                     disposables =>
                     {
                         this
-                            .OneWayBind(ViewModel, vm => vm.LabelWelcomeText, x => x.loginLabel.Text)
+                            .OneWayBind(ViewModel, vm => vm.Greeting, x => x.loginLabel.Text)
                             .DisposeWith(disposables);
                         this
                             .OneWayBind(ViewModel, vm => vm.LoginCommand, x => x.loginButton.Command)

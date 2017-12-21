@@ -32,7 +32,8 @@ namespace Target.ViewModels
             }
             set { this.RaiseAndSetIfChanged(ref _items, value); }
         }
-        public MasterListViewModel()
+        public MasterListViewModel(ISettingsService settingsService, ISettingsFactory settingsFactory)
+            : base(settingsService, settingsFactory)
         {
             MessagingCenter.Subscribe<ISettingsPage>(this, "mSettingsFontChanged", (sender) =>
             {

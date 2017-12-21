@@ -42,7 +42,8 @@ namespace Target.ViewModels
         public ReactiveCommand IsManualFontOnClicked => this.isManualFontOnClicked;
         private readonly ReactiveCommand fontSliderChanged;
         public ReactiveCommand FontSliderChanged => this.fontSliderChanged;
-        public SettingsViewModel()
+        public SettingsViewModel(ISettingsService settingsService, ISettingsFactory settingsFactory)
+            : base(settingsService, settingsFactory)
         {
             Greeting = "Settings Page";
             

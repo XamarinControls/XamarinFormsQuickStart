@@ -39,7 +39,8 @@ namespace Target.ViewModels
             get { return isTermsOn; }
             set { this.RaiseAndSetIfChanged(ref isTermsOn, value); }
         }
-        public AboutPageViewModel()
+        public AboutPageViewModel(ISettingsService settingsService, ISettingsFactory settingsFactory)
+            : base(settingsService, settingsFactory)
         {
             Greeting = "About Page";
             InitializeSettings();
