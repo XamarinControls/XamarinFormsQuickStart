@@ -1,4 +1,5 @@
 # Xamarin.Forms ReactiveUI Quickstart
+### .NetStandard 2.0 version instead of PCL found [here](https://github.com/helzgate/XamarinFormsQuickStart2.0)
 
 ## Using:
 * Akavache
